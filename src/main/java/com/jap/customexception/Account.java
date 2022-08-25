@@ -7,13 +7,16 @@ public class Account {
     public Account(int accountBalance) {
         this.accountBalance = accountBalance;
     }
-
     //create getter and setter
 
 
+    public int getAccountBalance() {
+        return accountBalance;
+    }
 
-
-
+    public void setAccountBalance(int accountBalance) {
+        this.accountBalance = accountBalance;
+    }
 
     /**
      * This method returns the new balance deducting the withdraw amount from the balance
@@ -25,8 +28,19 @@ public class Account {
      *
      */
     public int  withdraw(int  amount) throws InsufficientFundException{
+        try {
+            if (accountBalance < amount)
+            {
+                throw new InsufficientFundException("you have not sufficient balance in your account");
+            }
+            else {
+                accountBalance = accountBalance - amount;
+            }
 
-        return 1;
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return accountBalance;
     }
 
 
